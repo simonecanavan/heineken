@@ -1,0 +1,721 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heineken Seperated Animations</title>
+
+    <style>
+
+/**** GENERAL ****/
+        @font-face{
+            font-family: futura-light;
+            src: url(fonts/FuturaCondensedLight.otf);
+        }
+
+        @font-face{
+            font-family: futura;
+            src: url(fonts/FuturaStd-Condensed.otf);
+        }
+
+        body{
+            padding: 0;
+            margin: 0;
+            font-family: futura;
+        }
+
+        .container, .container_part2, .container_part3{
+            width: 768px;
+            height: 1024px;
+            background-color:#002700;
+        }
+
+        .container .background{
+            z-index: 1;
+            position: absolute;
+            width: 970px;
+            left: -13%;
+            top: -15%;
+            animation: back-ground ease 3s;
+            animation-fill-mode: both;
+            animation-delay: 1s;
+        }
+
+        .container_part2 .background{
+            width: 970px;
+            z-index: 1;
+            position: absolute;
+            left: -13%;
+            top: -15%;
+            animation: back-left ease 2s;
+            animation-fill-mode: both;
+            animation-delay: 1s;
+        }
+
+        .container_part3 .background{
+            z-index: 1;
+            position: absolute;
+            width: 970px;
+            left: -13%;
+            top: -15%;
+            animation: back-move ease 2s;
+            animation-fill-mode: both;
+            animation-delay: 1s;
+        }
+
+        .footer{
+            width: 100%;
+            z-index: 8;
+            position: absolute;
+            left:0;
+            bottom: 0%;
+        }
+
+        .container .star{
+            width: 365px;
+            z-index: 2;
+            left: 26%;
+            top: 13%;
+            position: absolute;
+            animation: star 3s;
+            animation-fill-mode: both;
+            animation-delay: 1s;
+        }
+
+        .container_part2 .star{
+            width: 365px;
+            z-index: 2;
+            left: 26%;
+            top: 13%;
+            position: absolute;
+            animation: star-left ease 2s;
+            animation-fill-mode: both;
+            animation-delay: 1s;
+        }
+
+        .container_part3 .star{
+            width: 365px;
+            position: absolute;
+            z-index: 2;
+            left: 26%;
+            top: 13%;
+            animation: star-disappear 2s;
+            animation-fill-mode: both;
+            animation-delay: 1s;
+        }
+
+        .container .bottle{
+            height: 45%;
+            top: 11%;
+            z-index: 3;
+            position: absolute;
+            animation: bottle-slide ease-out 2s;
+            animation-fill-mode: both;
+            animation-delay: 1.5s;
+        }
+
+        .container_part2 .bottle{
+            top: 11%;
+            animation: bottle-left ease 2s;
+            animation-fill-mode: both;
+            animation-delay: 1s;
+            height: 45%;
+            z-index: 3;
+            position: absolute;
+        }
+
+        .container_part3 .bottle{
+            top: 11%;
+            animation: bottle-down ease 2s;
+            animation-fill-mode: both;
+            animation-delay: 1s;
+            height: 45%;
+            z-index: 3;
+            position: absolute;
+        }
+
+/**** 1st SCREEN ****/
+
+            .container .bottle-blur{
+                top: 11%;
+                animation: bottle-blur-slide 1.7s ease-out, disappear .6s ease-in;
+                animation-fill-mode: both, forwards;
+                animation-delay: 1.5s, 3s;
+                height: 45%;
+                z-index: 2;
+                position: absolute;
+            }
+
+            .container_part2 .bottle-blur, .container_part3 .bottle-blur{
+                opacity: 0;
+            }
+
+        /**** BUTTON ****/
+
+        .container .button{
+            position: absolute;
+            z-index: 3;
+            top: 56%;
+            left: 40%;
+        }
+
+        .container_part2 .button{
+            animation: disappear .5s;
+            animation-delay: 1s;
+            animation-fill-mode: both;
+        }
+
+            .container .button-shine{
+                position: absolute;
+                z-index: 5;
+                top: 52%;
+                left: 25%;
+                opacity: 0 ;
+                animation: glow 3s infinite;
+                animation-delay: 4s;
+                animation-fill-mode: both;
+            }
+
+            .container_part2 .button-shine{
+                animation: disappear .1s;
+                animation-delay: 1s;
+                animation-fill-mode: forwards;
+            }
+
+        /**** TEXT ****/
+
+        .container .intro-text h1, .container .intro-text h2{
+            animation: appear 2s;
+            animation-delay: 3s;
+            animation-fill-mode: both;
+            position: absolute;
+            z-index: 3;
+            opacity: 0;
+            color: white;
+            text-align: center;
+        }
+
+        .container_part2 .intro-text h1, .container_part2 .intro-text h2{
+            animation: disappear .5s;
+            animation-delay: 1s;
+            animation-fill-mode: both;
+            position: absolute;
+            z-index: 3;
+            opacity: 0;
+            color: white;
+            text-align: center;
+        }
+
+        .container_part3 .intro-text h1, .container_part3 .intro-text h2{
+            opacity: 0;
+        }
+
+            .how-well-do{
+                top: 72%;
+                left: 16.9%;
+                font-family: futura-light;
+                font-size: 4em;
+            }
+
+            .opposition{
+                top: 78.5%;
+                left: 18%;
+                font-family: futura;
+                font-size: 5.7em;
+                border: none;
+            }
+
+
+        /**** LIGHTS ****/
+
+        .container .flares{
+            position: absolute;
+            z-index: 4;
+            top: 16.1%;
+            width: 1%;
+            height: 1%;
+            border-radius: 50%;
+            opacity: 0;
+            background-color: white;
+            box-shadow: 0 0 20px 12px white, 0 0 45px 30px rgb(0, 189, 236);
+        }
+
+            .container .flare-left{
+                left: 41.8%;
+                animation: glow 3s infinite;
+                animation-delay: 4s;
+                animation-fill-mode: both;
+            }
+
+            .container_part2 .flare-left{
+                animation: disappear .1s linear;
+                animation-delay: 1s;
+                animation-fill-mode: both;
+            }
+
+            .container .flare-middle{
+                left: 52.6%;
+                animation: glow 3s infinite;
+                animation-delay: 4s;
+                animation-fill-mode: both;
+            }
+
+            .container_part2 .flare-middle{
+                animation: disappear .1s linear;
+                animation-delay: 1s;
+                animation-fill-mode: both;
+            }
+
+            .container .flare-right{
+                left: 63.5%;
+                animation: glow 3s infinite;
+                animation-delay: 4s;
+                animation-fill-mode: both;
+            }
+
+            .container_part2 .flare-right{
+                animation: disappear .1s linear;
+                animation-delay: 1s;
+                animation-fill-mode: both;
+            }
+
+/**** 2ND SCREEN ****/
+
+        .container_part2 .form{
+            background-color: white;
+            width: 100%;
+            height: 60%;
+            position: absolute;
+            z-index: 3;
+            opacity: 0;
+            animation: form-appear ease 2s;
+            animation-delay: 1s;
+            animation-fill-mode: both;
+        }
+
+        .container_part3 .form{
+            background-color: white;
+            width: 100%;
+            height: 60%;
+            position: absolute;
+            z-index: 3;
+            opacity: 0;
+            animation: form-disappear ease 2s;
+            animation-delay: 1s;
+            animation-fill-mode: both;
+        }
+
+        .container .form-text{
+            opacity: 0;
+        }
+
+        .container_part2 .form-text{
+            color: white;
+            position: absolute;
+            z-index: 3;
+            font-size: 2em;
+            font-family: futura-light;
+            text-align: center;
+            top: 16%;
+            right: 5%;
+            opacity: 0;
+            animation: appear 2s;
+            animation-delay: 1.5s;
+            animation-fill-mode: both;
+        }
+
+        .container_part3 .form-text{
+            color: white;
+            position: absolute;
+            z-index: 3;
+            font-size: 2em;
+            font-family: futura-light;
+            text-align: center;
+            top: 16%;
+            right: 5%;
+            opacity: 0;
+            animation: disappear 1s;
+            animation-delay: 1s;
+            animation-fill-mode: both;
+        }
+
+        .container .crest{
+            opacity: 0;
+        }
+
+        .container_part2 .crest{
+            position: absolute;
+            z-index: 3;
+            top: 4%;
+            right: 18%;
+            width: 13%;
+            opacity: 0;
+            animation: appear 2s;
+            animation-delay: 1.5s;
+            animation-fill-mode: both;
+        }
+
+        .container_part3 .crest{
+            position: absolute;
+            z-index: 3;
+            top: 4%;
+            right: 18%;
+            width: 13%;
+            opacity: 0;
+            animation: disappear 1s;
+            animation-delay: 1s;
+            animation-fill-mode: both;
+        }
+
+/**** 3RD SCREEN ****/
+
+        .container_part3 .gradient{
+            position: absolute;
+            z-index: 6;
+            opacity: 0;
+            left: 0%;
+            top: 0%;
+            width: 100%;
+            animation: appear 1s;
+            animation-fill-mode: both;
+            animation-delay: 1s;
+        }
+
+    /**** ANSWER BOXES ****/
+
+        .container_part3 .answer-box{
+            position: absolute;
+            z-index: 7;
+            top: 32%;
+            opacity: 0;
+            animation: appear 1s, appear .5s;
+            animation-fill-mode: both;
+            animation-delay: 2s;
+        }
+
+            .answer-box-left{
+                left: 15%;
+            }
+
+            .answer-box-middle{
+                left: 40%;
+            }
+
+            .answer-box-right{
+                left: 65%;
+            }
+
+     /**** ANSWER TEXT ****/
+
+        .container_part3 .answer h3{
+            position: absolute;
+            z-index: 8;
+            top: 34%;
+            opacity: 0;
+            animation: appear 1s;
+            animation-fill-mode: both;
+            animation-delay: 2s;
+            color: red;
+            font-size: 2em;
+        }
+
+            .answer-left{
+                left: 21.7%;
+            }
+
+            .answer-middle{
+                left: 43.6%;
+            }
+
+            .answer-right{
+                left: 68.5%;
+            }       
+
+    /**** QUESTIONS ****/
+
+        .container_part3 .questions{
+            position: absolute;
+            z-index: 7;
+            left: 13.5%;
+            top: 10%;;
+            font-family: futura-light;
+            opacity: 0;
+            animation: appear 1s;
+            animation-fill-mode: both;
+            animation-delay: 2s;
+        }
+
+            h1{
+                color: white;
+                padding-bottom: 0;
+                text-align: center;
+                margin: 1%;
+            }
+
+            h2{
+                color: white;
+                padding: 1% 0 1% 0;
+                border-top: 2px solid white;
+                border-bottom: 2px solid white;
+                text-align: center;
+                font-size: 3em;
+                margin:0;
+            }
+
+/**** ANIMATIONS ****/
+
+    /**** STAR ****/  
+
+    @keyframes star{
+            0% {
+                transform: scale(1);
+            } 
+
+            100% {
+                transform: scale(3.6);
+            } 
+        }
+
+        @keyframes star-left {
+            0% {
+                transform: translate(0,0) scale(3.6);
+            } 
+               
+            100% {
+                transform: translate(-55%,-35%) scale(2);
+            }
+        }
+
+        @keyframes star-disappear{
+            0% {
+                transform: translate(-55%,-35%) scale(2);
+            } 
+
+            30% {
+                opacity: 1;
+            }
+
+            75% {
+                opacity: 0;
+            }
+               
+            100% {
+                transform: translate(0%, 95%) scale(3);
+                opacity: 0;
+            }
+        }
+
+    /**** FORM ****/  
+
+        @keyframes form-appear {
+            0%{
+                transform: translateY(100%);
+                opacity: 0;
+            }
+
+            100%{
+                transform: translateY(-70%);
+                opacity: 1;
+            }
+        }
+
+        @keyframes form-disappear {
+            0%{
+                 transform: translateY(-105%);
+                opacity: 1;
+            }
+
+            100%{
+                transform: translateY(92%);
+                opacity: 0;
+            }
+        }
+
+    /**** BACKGROUND ****/  
+
+       @keyframes back-ground{
+            0% {
+                transform: scale(.35);
+            } 
+
+            100% {
+                transform: scale(1);
+            } 
+        }
+
+        @keyframes back-left{
+            0% {
+                transform: scale(1) translate(0%, 0%);
+            } 
+
+            100% {
+                transform: scale(0.62) translate(-35%,-20%);
+            } 
+        }
+
+       @keyframes back-move {
+            0% {
+                transform: scale(0.62) translate(-35%,-20%);
+            } 
+               
+            100% {
+                transform: translate(0%, 38%) scale(.8);
+            }
+        }
+    /**** BOTTLE ****/   
+
+        @keyframes bottle-slide {
+            from {
+                transform: translateX(715%);
+            }
+
+            to {
+                transform: translateX(450%);                    
+                }
+        }
+
+        @keyframes bottle-blur-slide {
+            from {
+                transform: translateX(530%);
+            }
+
+            to {
+                transform: translate(300%);                    
+                }
+        }
+
+        @keyframes bottle-left {
+            from {
+                transform: translate(450%, 0%) scale(1);   
+            }
+
+            to {
+                transform: translate(205%, -30%) scale(0.6);                    
+                }
+        }
+
+        @keyframes bottle-down {
+            from {
+                transform: translate(205%, -30%) scale(0.6);   
+            }
+
+            to {
+                transform: translate(360%, 65%) scale(.8);                    
+                }
+        }
+
+    /**** LIGHTS ****/  
+
+       @keyframes glow {
+            0%{
+                opacity: 0;
+                }
+            50%{
+                opacity: 1;
+                }
+            100%{
+                opacity: 0;
+                }
+        }
+
+        @keyframes appear {
+            0%{
+                opacity: 0;
+            }    
+            100%{
+                opacity: 1;
+            }
+         }
+
+         @keyframes disappear {
+            0%{
+                opacity: 1;
+            }    
+            100%{
+                opacity: 0;
+            }
+         }
+
+    </style>
+
+</head>
+
+<body>
+    <div class="container">
+        
+        <img class="background" src="images/background.png" alt="background image">
+
+        <img class="star" src="images/star.png" alt="star image">
+
+        <img class="footer" src="images/footer.png" alt="footer">
+
+        <img class="bottle" src="images/straight-bottle.png" alt="heineken-bottle image">
+
+<!-- 1ST SCREEN -->
+
+        <img class="button" src="images/button.png" alt="button">
+
+        <img class="button-shine" src="images/button-shine.png" alt="button shine">
+
+        <div class="intro-text">
+            <h1 class="how-well-do">HOW WELL DO YOU KNOW</h1>
+
+            <h2 class="opposition">THE OPPOSITION?</h2>
+        </div>
+
+        <img class="bottle-blur" src="images/bottle-blur.png" alt="bottle blur image">
+
+        <div class="flare-left flares"></div>
+
+        <div class="flare-middle flares"></div>
+
+        <div class="flare-right flares"></div>
+
+<!-- 2ND SCREEN -->
+
+            <div class="form"></div>
+
+            <img class="crest" src="images/crest.png" alt="crest">
+
+            <h1 class="form-text">
+                JOIN US FOR EXCLUSIVE<br>REWARDS LIKE MATCH TICKETS,<br>COMPLIMENTARY PINTS AND<br>MUCH MORE.
+            </h1>
+
+<!-- 3RD SCREEN -->
+
+        --<img class="gradient" src="images/gradient.png" alt="gradient">
+
+        <img class="answer-box answer-box-left" src="images/answer.png" alt="answer box">
+
+        <img class="answer-box answer-box-middle" src="images/answer.png" alt="answer box">
+
+        <img class="answer-box answer-box-right" src="images/answer.png" alt="answer box">
+        
+        <div class="questions">
+
+            <h1> QUESTION 1 </h1>
+            <h2> WHICH ENGLISH TEAM HAS APPEARED <br> IN THE MOST CHAMPIONS CUP FINALS? </h2>
+
+        </div>
+        
+        <div class="answer">
+            <h3 class="answer-left"> BATH </h3>
+            <h3 class="answer-middle "> LEICESTER </h3>
+            <h3 class="answer-right "> SARACANS </h3>
+        </div>
+
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
